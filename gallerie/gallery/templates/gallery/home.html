@@ -1,0 +1,91 @@
+<!-- @format -->
+
+{% extends "gallery/base.html" %} {% block content %}
+<!-- Button trigger modal -->
+{% comment %}
+<img
+	class="img-fluid"
+	style="height: 400px; width: 400px"
+	src="https://images.pexels.com/photos/3831760/pexels-photo-3831760.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+/>
+<button
+	type="button"
+	class="btn btn-primary"
+	data-bs-toggle="modal"
+	data-bs-target="#staticBackdrop"
+>
+	Launch static backdrop modal
+</button>
+
+<!-- Modal -->
+<div
+	class="modal fade"
+	id="staticBackdrop"
+	data-bs-backdrop="static"
+	data-bs-keyboard="false"
+	tabindex="-1"
+	aria-labelledby="staticBackdropLabel"
+	aria-hidden="true"
+>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+				<button
+					type="button"
+					class="btn-close"
+					data-bs-dismiss="modal"
+					aria-label="Close"
+				></button>
+			</div>
+			<div class="modal-body"> ... </div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+					>Close</button
+				>
+				<button type="button" class="btn btn-primary">Understood</button>
+			</div>
+		</div>
+	</div>
+</div>
+{% endcomment %}
+<main>
+	<div class="album py-5 bg-light">
+		<div class="container">
+			<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+				{%for photo in photos%}
+				<div class="col">
+					<div class="card shadow-sm">
+						<img
+							src="{{photo}}"
+							class="bd-placeholder-img card-img-top"
+							width="100%"
+							height="225"
+						/>
+
+						<div class="card-body">
+							<p class="card-text"
+								>This is a wider card with supporting text below as a natural
+								lead-in to additional content. This content is a little bit
+								longer.</p
+							>
+							<div class="d-flex justify-content-between align-items-center">
+								<div class="btn-group">
+									<button type="button" class="btn btn-sm btn-outline-secondary"
+										>View</button
+									>
+									<button type="button" class="btn btn-sm btn-outline-secondary"
+										>Edit</button
+									>
+								</div>
+								<small class="text-muted">9 mins</small>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</main>
+{% endblock content %}
