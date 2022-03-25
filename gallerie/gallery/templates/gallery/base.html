@@ -1,5 +1,5 @@
 <!-- @format -->
-
+{% load bootstrap5 %} {% load static%}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 	<head>
@@ -11,19 +11,26 @@
 			integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 			crossorigin="anonymous"
 		/>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+			crossorigin="anonymous"
+		></script>
+
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
 			href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
 			rel="stylesheet"
 		/>
-		{% comment %}
+
 		<link
 			rel="stylesheet"
 			type="text/css"
 			href="{% static 'gallery/main.css' %}"
 		/>
-		{% endcomment %} {% if title %}
+		
+		{% if title %}
 		<title>Gallerie - {{ title }}</title>
 		{% else %}
 		<title>Gallerie</title>
@@ -62,11 +69,16 @@
 					<ul
 						class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
 					>
-						<li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
-						<li><a href="#" class="nav-link px-2 text-white">Features</a></li>
-						<li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-						<li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-						<li><a href="#" class="nav-link px-2 text-white">About</a></li>
+						<li
+							><a href="#" class="nav-link px-2 fw-bolder h3 text-info"
+								>Gallerie</a
+							></li
+						>
+						<li
+							><a href="#" class="nav-link px-2 fw-bold h3 my-auto text-white"
+								>Features</a
+							></li
+						>
 					</ul>
 
 					<form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
@@ -77,13 +89,6 @@
 							aria-label="Search"
 						/>
 					</form>
-
-					<div class="text-end">
-						<button type="button" class="btn btn-outline-light me-2"
-							>Login</button
-						>
-						<button type="button" class="btn btn-warning">Sign-up</button>
-					</div>
 				</div>
 			</div>
 		</header>
@@ -97,10 +102,6 @@
 						contents, the creator, etc. Make it short and sweet, but not too
 						short so folks don’t simply skip over it entirely.</p
 					>
-					<p>
-						<a href="#" class="btn btn-primary my-2">Main call to action</a>
-						<a href="#" class="btn btn-secondary my-2">Secondary action</a>
-					</p>
 				</div>
 			</div>
 		</section>
@@ -131,12 +132,8 @@
 			</footer>
 		</div>
 		<!-- Footer -->
+		{% block scripts %}
 
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-			integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-			crossorigin="anonymous"
-		></script>
 		<script
 			src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
 			integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
@@ -147,5 +144,6 @@
 			integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
 			crossorigin="anonymous"
 		></script>
+		{% endblock %}
 	</body>
 </html>
