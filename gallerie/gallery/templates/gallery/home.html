@@ -3,67 +3,50 @@
 <!-- Button trigger modal -->
 
 <main>
-	<div class="album py-5 bg-light">
-		<div class="container-fluid">
-			<div class="d-flex flex-wrap">
-				{%for photo in photos%}
-				<img
-					class=""
-					data-bs-toggle="modal"
-					data-bs-target="#staticBackdrop"
-					src="{{photo}}"
-					alt="Trolltunga, Norway"
-					width="500"
-					height="300"
-				/>
-
-				<!-- Modal -->
-				<div
-					class="modal fade"
-					id="staticBackdrop"
-					data-bs-backdrop="static"
-					data-bs-keyboard="false"
-					tabindex="-1"
-					aria-labelledby="staticBackdropLabel"
-					aria-hidden="true"
+	<div class="container my-2">
+		<div class="text-center">
+			<div class="card text-center">
+				<div class="card-header text-center mx-auto"> Featured </div>
+				<ul
+					class="list-group list-group-flush d-flex flex-row flex-wrap justify-content-center"
 				>
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="staticBackdropLabel"
-									>Modal title</h5
-								>
-								<button
-									type="button"
-									class="btn-close"
-									data-bs-dismiss="modal"
-									aria-label="Close"
-								></button>
-							</div>
-							<div class="modal-body">
-								<img
-									src="{{photo}}"
-									class="img-fluid"
-									alt="Trolltunga, Norway"
-									width="600"
-									height="400"
-								/>
-							</div>
-							<div class="modal-footer">
-								<button
-									type="button"
-									class="btn btn-secondary"
-									data-bs-dismiss="modal"
-									>Close</button
-								>
-								<button type="button" class="btn btn-primary"
-									>Understood</button
-								>
-							</div>
-						</div>
-					</div>
+					<li
+						class="list-group-item btn btn-outline-info border shadow rounded-3"
+						>An item</li
+					>
+					<li
+						class="list-group-item btn btn-outline-info border shadow rounded-3"
+						>A second item</li
+					>
+					<li
+						class="list-group-item btn btn-outline-info border shadow rounded-3"
+						>A third item</li
+					>
+					<li
+						class="list-group-item btn btn-outline-info border shadow rounded-3"
+						>A fourth item</li
+					>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-12 d-flex flex-wrap flex-md-row flex-sm-column">
+		<div class="container-fluid album py-5 bg-light">
+			<div class="container-fluid">
+				<div class="d-flex flex-wrap justify-content-between mx-auto">
+					{%for photo in photos%}
+					<img
+						class="m-2 rounded-3 col-lg-3 col-md-6 col-sm-12 img-fluid px-sm-2 mx-sm-auto"
+						data-bs-toggle="modal"
+						data-bs-target="#staticBackdrop"
+						src="{{photo}}"
+						alt="Trolltunga, Norway"
+						width="auto"
+						height="auto"
+					/>
+
+					{% endfor %}
 				</div>
-				{% endfor %}
 			</div>
 		</div>
 	</div>
