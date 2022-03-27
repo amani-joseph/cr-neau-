@@ -1,0 +1,7 @@
+/** @format */
+
+.carousel-caption {
+	transform: translateY(-50%) !important;
+	bottom: initial;
+	top: 50%;
+}
