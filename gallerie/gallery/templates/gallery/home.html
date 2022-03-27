@@ -10,22 +10,10 @@
 				<ul
 					class="list-group list-group-flush d-flex flex-row flex-wrap justify-content-center"
 				>
-					<li
-						class="list-group-item btn btn-outline-info border shadow rounded-3"
-						>An item</li
-					>
-					<li
-						class="list-group-item btn btn-outline-info border shadow rounded-3"
-						>A second item</li
-					>
-					<li
-						class="list-group-item btn btn-outline-info border shadow rounded-3"
-						>A third item</li
-					>
-					<li
-						class="list-group-item btn btn-outline-info border shadow rounded-3"
-						>A fourth item</li
-					>
+					{% for category in categories %}
+                        <option class="list-group-item btn btn-outline-info border shadow rounded-3" value='{{category.id}}'>{{category.name}}</option>
+					{% endfor %}
+					
 				</ul>
 			</div>
 		</div>

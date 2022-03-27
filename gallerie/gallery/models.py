@@ -29,10 +29,10 @@ class Location(models.Model):
 class Photo(models.Model):
     class Meta:
         verbose_name = 'Photo'
-        verbose_name_plural = 'Photos'
+        verbose_name_plural = 'images'
 
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
-    image = models.ImageField(null=False, blank=False, upload_to='Photos')
+    image = models.ImageField(null=False, blank=False)
     description = models.TextField()
     location = models.ForeignKey(Location, on_delete=models.SET_NULL, null=True, blank=True)
 

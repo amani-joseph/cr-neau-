@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Category,Photo, Location
 
 # DUMMY DATA
 photos = [
@@ -17,8 +18,9 @@ photos = [
 
 # Create your views here.
 def gallery(request):
+    categories = Category.objects.all()
     context = {
-        'photos': photos
+        'categories': categories
     }
     return render(request, 'gallery/home.html', context)
 

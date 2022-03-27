@@ -36,7 +36,7 @@ class Migration(migrations.Migration):
             ],
             options={
                 'verbose_name': 'Photo',
-                'verbose_name_plural': 'Photos',
+                'verbose_name_plural': 'images',
             },
         ),
     ]
