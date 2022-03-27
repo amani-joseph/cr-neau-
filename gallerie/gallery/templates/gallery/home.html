@@ -21,67 +21,100 @@
 				</ul>
 			</div>
 		</div>
+		<div class="text-center">
+			<div class="card text-center">
+				<div class="card-header text-center mx-auto"> Locations </div>
+				<ul
+					class="list-group list-group-flush d-flex flex-row flex-wrap justify-content-center"
+				>
+					{% for location in locations %}
+					<option
+						class="list-group-item btn btn-outline-info border shadow rounded-3"
+						value="{{location}}"
+						>{{location.location}}</option
+					>
+
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
 	</div>
 	<div class="col-md-12 d-flex flex-wrap flex-md-row flex-sm-column">
 		<div class="container-fluid album py-5 bg-light">
 			<div class="container-fluid">
 				<div class="d-flex flex-column justify-content-between mx-auto">
 					{%for photo in photos%}
-					<div class="container mx-auto text-center">
-						<button class="btn btn-outline-primary btn-block mx-auto">{{ photo.category.name }}</button>
-						<button class="btn btn-outline-primary btn-block mx-auto">{{ photo. }}</button>
-					</div>
-					<!-- Button trigger modal -->
-					<img
-						class="m-2 rounded-3 col-lg-6 col-md-6 col-12 img-fluid px-sm-2 mx-sm-auto"
-						data-bs-toggle="modal"
-						type="button"
-						data-bs-target="#staticBackdrop"
-						src="{{photo.image.url}}"
-						alt="Trolltunga, Norway"
-						width="auto"
-						height="auto"
-					/>
+					<div class="container border rounded-3 col-5 shadow-lg p-3 mb-5 bg-body ">
+						<div class="container mx-auto text-center">
+							<button class="btn btn-outline-primary btn-block mx-auto"
+								>{{ photo.category.name }}</button
+							>
+							<button class="btn btn-outline-primary btn-block mx-auto"
+								>{{ photo.location }}</button
+							>
+						</div>
+						<!-- Button trigger modal -->
+						<img
+							class="  img-fluid px-sm-2 mx-auto"
+							data-bs-toggle="modal"
+							type="button"
+							data-bs-target="#staticBackdrop"
+							src="{{photo.image.url}}"
+							alt="Trolltunga, Norway"
+							width="auto"
+							height="auto"
+						/>
 
-					<!-- Modal -->
-					<div
-						class="modal fade"
-						id="staticBackdrop"
-						data-bs-backdrop="static"
-						data-bs-keyboard="false"
-						tabindex="-1"
-						aria-labelledby="staticBackdropLabel"
-						aria-hidden="true"
-					>
-						<div class="modal-dialog modal-xl">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title h6" id="staticBackdropLabel"
-										>{{ photo.description}}</h5
-									>
-									<button
-										type="button"
-										class="btn-close"
-										data-bs-dismiss="modal"
-										aria-label="Close"
-									></button>
-								</div>
-								<div class="modal-body">
-									<img
-										class="m-2 rounded-3 col-12 img-fluid px-sm-2 mx-auto"
-										src="{{photo.image.url}}"
-										alt="Trolltunga, Norway"
-										width="auto"
-										height="auto"
-									/>
-								</div>
-								<div class="modal-footer">
-									<button
-										type="button"
-										class="btn btn-warning"
-										data-bs-dismiss="modal"
-										>Close</button
-									>
+						<!-- Modal -->
+						<div
+							class="modal fade"
+							id="staticBackdrop"
+							data-bs-backdrop="static"
+							data-bs-keyboard="false"
+							tabindex="-1"
+							aria-labelledby="staticBackdropLabel"
+							aria-hidden="true"
+						>
+							<div class="modal-dialog modal-xl">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title h6" id="staticBackdropLabel"
+											>{{ photo.description}}</h5
+										>
+										<button
+											type="button"
+											class="btn-close"
+											data-bs-dismiss="modal"
+											aria-label="Close"
+										></button>
+									</div>
+									<div class="modal-body">
+										<img
+											class="m-2 rounded-3 col-12 img-fluid px-sm-2 mx-auto"
+											src="{{photo.image.url}}"
+											alt="Trolltunga, Norway"
+											width="auto"
+											height="auto"
+										/>
+									</div>
+									<div class="modal-footer">
+										<span class="container">
+											<span>
+												<button class="btn btn-secondary">copy</button>
+											</span>
+										<span id="photo_url" class="text-center">
+										http://127.0.0.1:8000/{{photo.image.url}}
+										</span>
+										</span>
+
+
+										<button
+											type="button"
+											class="btn btn-warning"
+											data-bs-dismiss="modal"
+											>Close</button
+										>
+									</div>
 								</div>
 							</div>
 						</div>

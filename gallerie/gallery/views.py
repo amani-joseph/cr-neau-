@@ -19,11 +19,13 @@ from .models import Category,Photo, Location
 # Create your views here.
 def gallery(request):
     categories = Category.objects.all()
+    locations = Location.objects.all()
     photos = Photo.objects.all()
     # image = Photo.objects.get(id=pk)
     context = {
         'categories': categories,
         'photos': photos,
+        'locations': locations,
         # 'image': image
     }
     return render(request, 'gallery/home.html', context)
