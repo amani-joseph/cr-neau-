@@ -11,9 +11,13 @@
 					class="list-group list-group-flush d-flex flex-row flex-wrap justify-content-center"
 				>
 					{% for category in categories %}
-                        <option class="list-group-item btn btn-outline-info border shadow rounded-3" value='{{category.id}}'>{{category.name}}</option>
+					<option
+						class="list-group-item btn btn-outline-info border shadow rounded-3"
+						value="{{category.id}}"
+						>{{category.name}}</option
+					>
+
 					{% endfor %}
-					
 				</ul>
 			</div>
 		</div>
@@ -21,17 +25,63 @@
 	<div class="col-md-12 d-flex flex-wrap flex-md-row flex-sm-column">
 		<div class="container-fluid album py-5 bg-light">
 			<div class="container-fluid">
-				<div class="d-flex flex-wrap justify-content-between mx-auto">
+				<div class="d-flex flex-column justify-content-between mx-auto">
 					{%for photo in photos%}
+					<!-- Button trigger modal -->
 					<img
-						class="m-2 rounded-3 col-lg-3 col-md-6 col-sm-12 img-fluid px-sm-2 mx-sm-auto"
+						class="m-2 rounded-3 col-lg-6 col-md-6 col-12 img-fluid px-sm-2 mx-sm-auto"
 						data-bs-toggle="modal"
+						type="button"
 						data-bs-target="#staticBackdrop"
-						src="{{photo}}"
+						src="{{photo.image.url}}"
 						alt="Trolltunga, Norway"
 						width="auto"
 						height="auto"
 					/>
+
+					<!-- Modal -->
+					<div
+						class="modal fade"
+						id="staticBackdrop"
+						data-bs-backdrop="static"
+						data-bs-keyboard="false"
+						tabindex="-1"
+						aria-labelledby="staticBackdropLabel"
+						aria-hidden="true"
+					>
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="staticBackdropLabel"
+										>Modal title</h5
+									>
+									<button
+										type="button"
+										class="btn-close"
+										data-bs-dismiss="modal"
+										aria-label="Close"
+									></button>
+								</div>
+								<div class="modal-body">
+									<img
+										class="m-2 rounded-3 col-lg-6 col-md-6 col-12 img-fluid px-sm-2 mx-sm-auto"
+										src="{{photo.image.url}}"
+										alt="Trolltunga, Norway"
+										width="auto"
+										height="auto"
+									/>
+								</div>
+								<div class="modal-footer">
+									<button
+										type="button"
+										class="btn btn-warning"
+										data-bs-dismiss="modal"
+										>Close</button
+									>
+								</div>
+							</div>
+						</div>
+					</div>
 
 					{% endfor %}
 				</div>

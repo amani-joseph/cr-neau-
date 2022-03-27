@@ -19,8 +19,12 @@ photos = [
 # Create your views here.
 def gallery(request):
     categories = Category.objects.all()
+    photos = Photo.objects.all()
+    image = Photo.objects.get(id=pk)
     context = {
-        'categories': categories
+        'categories': categories,
+        'photos': photos,
+        'image': image
     }
     return render(request, 'gallery/home.html', context)
 
