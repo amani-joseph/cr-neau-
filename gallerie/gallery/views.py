@@ -20,11 +20,11 @@ from .models import Category,Photo, Location
 def gallery(request):
     categories = Category.objects.all()
     photos = Photo.objects.all()
-    image = Photo.objects.get(id=pk)
+    # image = Photo.objects.get(id=pk)
     context = {
         'categories': categories,
         'photos': photos,
-        'image': image
+        # 'image': image
     }
     return render(request, 'gallery/home.html', context)
 
