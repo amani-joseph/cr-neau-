@@ -39,29 +39,34 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-12 d-flex flex-wrap flex-md-row flex-sm-column">
+	<div class="container-fluid">
 		<div class="container-fluid album py-5 bg-light">
 			<div class="container-fluid">
-				<div class="d-flex flex-column justify-content-between mx-auto">
+				<div
+					class="container-fluid d-flex flex-wrap flex-sm-wrap justify-content-around mx-auto"
+				>
 					{%for photo in photos%}
-					<div class="container border rounded-3 col-5 shadow-lg p-3 mb-5 bg-body ">
-						<div class="container mx-auto text-center">
+					<div
+						class="container-fluid m-2 flex-fill border rounded-3  col-sm-10 col-xl-6 col-lg-3 shadow-lg p-3 mb-5 bg-body"
+					>
+						<div class="container mx-auto my-auto text-center py-2">
 							<button class="btn btn-outline-primary btn-block mx-auto"
 								>{{ photo.category.name }}</button
 							>
-							<button class="btn btn-outline-primary btn-block mx-auto"
+							<button class="btn btn-outline-success btn-block mx-auto"
 								>{{ photo.location }}</button
 							>
 						</div>
 						<!-- Button trigger modal -->
 						<img
-							class="  img-fluid px-sm-2 mx-auto"
+
 							data-bs-toggle="modal"
+							class="img-fluid img-thumbnail px-sm-1 mx-auto my-auto "
 							type="button"
 							data-bs-target="#staticBackdrop"
 							src="{{photo.image.url}}"
-							alt="Trolltunga, Norway"
-							width="auto"
+							alt="{{photo.description}}"
+							width="100%"
 							height="auto"
 						/>
 
@@ -74,13 +79,22 @@
 							tabindex="-1"
 							aria-labelledby="staticBackdropLabel"
 							aria-hidden="true"
+							style=" "
 						>
-							<div class="modal-dialog modal-xl">
+							<div class="modal-dialog modal-xl col-10">
 								<div class="modal-content">
 									<div class="modal-header">
 										<h5 class="modal-title h6" id="staticBackdropLabel"
 											>{{ photo.description}}</h5
 										>
+										<span class="container mx-auto text-center py-2">
+							<button class="btn btn-outline-primary btn-block mx-auto"
+								>{{ photo.category.name }}</button
+							>
+							<button class="btn btn-outline-success btn-block mx-auto"
+								>{{ photo.location }}</button
+							>
+						</span>
 										<button
 											type="button"
 											class="btn-close"
@@ -102,11 +116,10 @@
 											<span>
 												<button class="btn btn-secondary">copy</button>
 											</span>
-										<span id="photo_url" class="text-center">
-										http://127.0.0.1:8000/{{photo.image.url}}
+											<span id="photo_url" class="text-center">
+												http://127.0.0.1:8000/{{photo.image.url}}
+											</span>
 										</span>
-										</span>
-
 
 										<button
 											type="button"
