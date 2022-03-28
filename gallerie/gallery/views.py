@@ -17,7 +17,9 @@ from .models import Category,Photo, Location
 #     'https://images.pexels.com/photos/1612353/pexels-photo-1612353.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',]
 
 # Create your views here.
+
 def gallery(request):
+
     categories = Category.objects.all()
     locations = Location.objects.all()
     photos = Photo.objects.all()
@@ -30,10 +32,4 @@ def gallery(request):
     }
     return render(request, 'gallery/home.html', context)
 
-
-def addPhoto(request):
-    context = {
-        'photos': photos
-    }
-    return render(request, 'gallery/add.html', context)
 

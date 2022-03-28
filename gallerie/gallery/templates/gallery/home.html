@@ -8,14 +8,15 @@
 			<div class="card text-center">
 				<div class="card-header text-center mx-auto"> Featured </div>
 				<ul
-					class="list-group list-group-flush d-flex flex-row flex-wrap justify-content-center"
+					class="list-group list-group-flush d-flex flex-row flex-wrap justify-content-center m-2 text-center  px-2"
 				>
 					{% for category in categories %}
 					<option
-						class="list-group-item btn btn-outline-info border shadow rounded-3"
+						class="list-group-item btn btn-outline-info border m-2 shadow rounded-3"
+						style="width: 8em"
 						value="{{category.id}}"
-						>{{category.name}}</option
-					>
+						>{{category.name}}
+					</option>
 
 					{% endfor %}
 				</ul>
@@ -26,10 +27,12 @@
 				<div class="card-header text-center mx-auto"> Locations </div>
 				<ul
 					class="list-group list-group-flush d-flex flex-row flex-wrap justify-content-center"
+
 				>
 					{% for location in locations %}
 					<option
-						class="list-group-item btn btn-outline-info border shadow rounded-3"
+						class="list-group-item btn btn-outline-primary border shadow rounded-3 m-2"
+						style="width: 8em"
 						value="{{location}}"
 						>{{location.location}}</option
 					>
@@ -61,9 +64,9 @@
 						<img
 
 							data-bs-toggle="modal"
-							class="img-fluid img-thumbnail px-sm-1 mx-auto my-auto "
+							class="img-fluid rounded px-sm-1 mx-auto my-auto "
 							type="button"
-							data-bs-target="#staticBackdrop"
+							data-bs-target="#pic{{photo.id}}"
 							src="{{photo.image.url}}"
 							alt="{{photo.description}}"
 							width="100%"
@@ -73,7 +76,7 @@
 						<!-- Modal -->
 						<div
 							class="modal fade"
-							id="staticBackdrop"
+							id="pic{{photo.id}}"
 							data-bs-backdrop="static"
 							data-bs-keyboard="false"
 							tabindex="-1"
@@ -106,7 +109,7 @@
 										<img
 											class="m-2 rounded-3 col-12 img-fluid px-sm-2 mx-auto"
 											src="{{photo.image.url}}"
-											alt="Trolltunga, Norway"
+											alt="{{photo.image.description}}"
 											width="auto"
 											height="auto"
 										/>
