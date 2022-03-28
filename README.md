@@ -1,8 +1,6 @@
 <!-- @format -->
-
-# Django 4.0+ project template
-
-This is a simple Django 4.0+ project template with my preferred setup. Most Django project templates make way too many assumptions or are just way too complicated. I try to make the least amount of assumptions possible while still trying provide a useful setup. Most of my projects are deployed to Heroku, so this is optimized for that but is not necessary.
+# GALLERIE
+This is a gallery application that displays photos based on category and location. Users can view details about the photos and copy the photo link to share with others.
 
 ## Features
 
@@ -15,16 +13,39 @@ This is a simple Django 4.0+ project template with my preferred setup. Most Djan
 - Procfile for running gunicorn with New Relic's Python agent.
 - PostgreSQL database support with psycopg2.
 
+## Screenshot
+
+<img src="" >
+
+### Dependencies
+
+In order for you to use the content on this repo ensure you have the following:
+
+- A computer that runs on either of the following; (Windows 7+, Linux, Mac OS)
+- Python 3.6+
+
+
 ## How to install
 
 ```bash
-$ django-admin.py startproject \
-  --template=https://github.com/jpadilla/django-project-template/archive/master.zip \
-  --name=Procfile \
-  --extension=py,md,env \
-  project_name
-$ mv example.env .env
-$ pipenv install --dev
+#clone the repo
+git clone https://github.com/amani-joseph/gallerie.git
+# install virtual environment
+$ python3 -m venv venv
+#actictvate virtual environment
+$ . venv/bin/active
+#Install all dependecies
+$ pip install -r requirements.txt
+# Make databases and make migrations
+$ python manage.py makemigrations 
+$ python manage.py migrate 
+#create a super user
+$ python manage.py rceatesuperuser 
+#4. Running the application
+$ python3 manage.py runserver
+
+
+
 ```
 
 ## Environment variables
