@@ -6,17 +6,26 @@
 	<div class="container my-3">
 		<div class="text-center">
 			<div class="card text-center">
-				<div class="card-header text-center mx-auto"> Featured </div>
+				<div class="card-header text-center mx-auto"> Categories </div>
 				<ul
-					class="list-group list-group-flush d-flex flex-row flex-wrap justify-content-center m-2 text-center  px-2"
+					class="list-group list-group-flush d-flex flex-row flex-wrap justify-content-center m-2 text-center px-2"
 				>
+					<a href="{% url 'gallery-home'%}">
+						<li
+							class="list-group-item btn btn-outline-info border m-2 shadow rounded-3"
+							style="width: 8em"
+							>All
+						</li>
+					</a>
+
 					{% for category in categories %}
-					<option
-						class="list-group-item btn btn-outline-info border m-2 shadow rounded-3"
-						style="width: 8em"
-						value="{{category.id}}"
-						>{{category.name}}
-					</option>
+					<a href="{% url 'gallery-home'%}?category={{category.name}}">
+						<li
+							class="list-group-item btn btn-outline-info border m-2 shadow rounded-3"
+							style="width: 9em"
+							>{{category.name}}
+						</li>
+					</a>
 
 					{% endfor %}
 				</ul>
@@ -27,15 +36,22 @@
 				<div class="card-header text-center mx-auto"> Locations </div>
 				<ul
 					class="list-group list-group-flush d-flex flex-row flex-wrap justify-content-center"
-
 				>
+					<a href="">
+						<li
+							class="list-group-item btn btn-outline-info border m-2 shadow rounded-3"
+							style="width: 8em"
+							>All
+						</li>
+					</a>
 					{% for location in locations %}
-					<option
-						class="list-group-item btn btn-outline-primary border shadow rounded-3 m-2"
-						style="width: 8em"
-						value="{{location}}"
-						>{{location.location}}</option
-					>
+					<a href="{% url 'gallery-home'%}?location={{location.location}}">
+						<li
+							class="list-group-item btn btn-outline-primary border shadow rounded-3 m-2"
+							style="width: 8em"
+							>{{location.location}}</li
+						>
+					</a>
 
 					{% endfor %}
 				</ul>
@@ -47,12 +63,11 @@
 			<div class="container-fluid">
 				<div
 					class="container-fluid d-flex flex-wrap flex-sm-wrap justify-content-around mx-auto"
+					data-masonry='{ "itemSelector": ".picture", columnWidth: 5, fitWidth: true}'
 				>
 					{%for photo in photos%}
-					<div
-						class="container-fluid m-2 flex-fill border rounded-3 col-sm-12 col-md-5  shadow-lg p-3 mb-5 bg-body"
-					>
-						<div class="container mx-auto my-auto text-center py-2">
+					<span class="picture m-2 w-25 shadow-lg p-3 mb-5 bg-body">
+						<div class="mx-auto my-auto text-center py-2">
 							<button class="btn btn-outline-primary btn-block mx-auto"
 								>{{ photo.category.name }}</button
 							>
@@ -62,9 +77,8 @@
 						</div>
 						<!-- Button trigger modal -->
 						<img
-
 							data-bs-toggle="modal"
-							class="img-fluid rounded px-sm-1 mx-auto my-auto "
+							class="px-sm-1 mx-auto my-auto"
 							type="button"
 							data-bs-target="#pic{{photo.id}}"
 							src="{{photo.image.url}}"
@@ -82,22 +96,19 @@
 							tabindex="-1"
 							aria-labelledby="staticBackdropLabel"
 							aria-hidden="true"
-							style=" "
+							style=""
 						>
 							<div class="modal-dialog modal-xl col-10">
 								<div class="modal-content">
 									<div class="modal-header">
-										<h5 class="modal-title h6" id="staticBackdropLabel"
-											>{{ photo.description}}</h5
-										>
 										<span class="container mx-auto text-center py-2">
-							<button class="btn btn-outline-primary btn-block mx-auto"
-								>{{ photo.category.name }}</button
-							>
-							<button class="btn btn-outline-success btn-block mx-auto"
-								>{{ photo.location }}</button
-							>
-						</span>
+											<button class="btn btn-outline-primary btn-block mx-auto"
+												>{{ photo.category.name }}</button
+											>
+											<button class="btn btn-outline-success btn-block mx-auto"
+												>{{ photo.location }}</button
+											>
+										</span>
 										<button
 											type="button"
 											class="btn-close"
@@ -106,6 +117,11 @@
 										></button>
 									</div>
 									<div class="modal-body">
+										<h5
+											class="modal-title text-center text-decoration-underline fw-bold h6"
+											id="staticBackdropLabel"
+											>{{ photo.description}}</h5
+										>
 										<img
 											class="m-2 rounded-3 col-12 img-fluid px-sm-2 mx-auto"
 											src="{{photo.image.url}}"
@@ -117,11 +133,38 @@
 									<div class="modal-footer">
 										<span class="container">
 											<span>
-												<button class="btn btn-secondary">copy</button>
+												<button
+													class="btn btn-secondary"
+													id="button1"
+													onclick="CopyToClipboard('div1')"
+													>copy</button
+												>
 											</span>
-											<span id="photo_url" class="text-center">
+											<span id="div1" class="text-center">
 												http://127.0.0.1:8000/{{photo.image.url}}
 											</span>
+											{% comment %} <script>
+												function CopyToClipboard(containerid) {
+													if (document.selection) {
+														var range = document.body.createTextRange();
+														range.moveToElementText(
+															document.getElementById(containerid)
+														);
+														range.select().createTextRange();
+														document.execCommand("copy");
+													} else if (window.getSelection) {
+														var range = document.createRange();
+														range.selectNode(
+															document.getElementById(containerid)
+														);
+														window.getSelection().addRange(range);
+														document.execCommand("copy");
+														alert(
+															"Text has been copied, now paste in the text-area"
+														);
+													}
+												}
+											</script> {% endcomment %}
 										</span>
 
 										<button
@@ -134,7 +177,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</span>
 
 					{% endfor %}
 				</div>
