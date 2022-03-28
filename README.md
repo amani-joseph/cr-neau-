@@ -15,7 +15,7 @@ This is a gallery application that displays photos based on category and locatio
 
 ## Screenshot
 
-<img src="" >
+<img src="https://github.com/amani-joseph/gallerie/blob/master/amani-gallerie.herokuapp.com_.png?raw=true" >
 
 ### Dependencies
 
